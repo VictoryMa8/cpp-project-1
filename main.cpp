@@ -9,6 +9,12 @@ std::string text[limit];
 const int input_index = 2;
 const int prompt_index = 25;
 
+struct Node {
+    int id;
+    std::string name;
+    Node* next;
+};
+
 class State {
     int screen_num;
 
@@ -45,21 +51,19 @@ void display_text(const State &state, std::ostream &os) {
 
 // used to be called update_screen_num
 void State::update(const std::string &input) {
-    if (0 == screen_num) {
-      screen_num = 1;
-    } 
-    
-    else if (1 == screen_num) screen_num = 2;
-   
+    if (0 == screen_num) { screen_num = 1; } 
+    else if (screen_num == 1) { screen_num = 2; }
     else {
       int input_num = stoi(input);
+      // screen 2
+      if (input_num == 1) {
+        screen_num = 3;
+      } else if (input_num == 2) { 
+        screen_num = 4; }
     }
 }
 
 int main() {
-    int x = 5;
-    std::cout << x << std::endl;
-
     read_text_data();
     bool just_starting = true;
     while (1) {

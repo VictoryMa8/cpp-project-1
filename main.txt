@@ -1,0 +1,17 @@
+
+# screen 1
+Welcome to the program. Press return to start.
+
+# screen 2
+Choose an option.
+1) Option A.
+2) Option B.
+
+# screen 3
+Hello.
+
+# screen 4
+Greetings.
+
+# screen 5
+Hello.
