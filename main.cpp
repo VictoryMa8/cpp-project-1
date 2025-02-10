@@ -40,30 +40,53 @@ class LinkedList {
         if (head == NULL) {
             head = node;
         }
-        // if linked list not empty, find last node to set the next one to be the new node
-        while (temp->next != nullptr) {
-            temp = temp->next;
+        else {
+            // if linked list not empty, new node is added to the end
+            while (temp->next != nullptr) {
+                temp = temp->next;
+            }
+            temp->next = node;
         }
-        temp->next = node;
     }
 
-    // removing a node
+    // removing a node by id
     void removeNode(int i) {
+        if (head == nullptr) return;
+        // if node to be removed is the head
+        if (head->id == i) {
+            Node* temp = head;
+            head = head->next;
+            delete temp;
+            return;
+        }
+
         Node* temp = head;
-        int index = 0;
-        while (temp->next != nullptr) {
-            // find the node by id
-            if (temp->id == i) {
-                Node* temp2 = temp->next;
-                temp = head;
-                for (int i = 0; i < index; i++) {
-                    temp = temp->next;
-                }
-                temp->next = temp2;
-            }
-            index += 1;
+        Node* prev = nullptr;
+        while (temp != nullptr && temp->id != i) {
+            prev = temp;
             temp = temp->next;
         }
+
+        // if node not found
+        if (temp == nullptr) return;
+
+        prev->next = temp->next;
+        delete temp;
+
+    }
+
+    // searching for a node by name
+    bool searchNode(std::string n) {
+        Node* temp = head;
+        while (temp != nullptr) {
+            if (temp->name == n) {
+                std::cout << "Node found with id of " << temp->id << std::endl;
+                return true;
+            }
+            temp = temp->next;
+        }
+        std::cout << "Node not found" << std::endl;
+        return false;
     }
 };
 
