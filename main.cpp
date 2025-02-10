@@ -12,7 +12,25 @@ const int prompt_index = 25;
 struct Node {
     int id;
     std::string name;
+    double value;
     Node* next;
+
+    Node(int i, std::string n, double v) {
+        id = i;
+        name = n;
+        value = v;
+        next = nullptr;
+    }
+};
+
+class LinkedList {
+    private:
+        Node* head;
+
+    public:
+        LinkedList() {
+            head = nullptr;
+        }
 };
 
 class State {
