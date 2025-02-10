@@ -31,6 +31,40 @@ class LinkedList {
         LinkedList() {
             head = nullptr;
         }
+    // adding a new node
+    void addNode(int i, std::string n, double v) {
+        // create a new book with arguments
+        Node* node = new Node(i, n, v);
+        Node* temp = head;
+        // if nothing in the linked list yet, set head to it
+        if (head == NULL) {
+            head = node;
+        }
+        // if linked list not empty, find last node to set the next one to be the new node
+        while (temp->next != nullptr) {
+            temp = temp->next;
+        }
+        temp->next = node;
+    }
+
+    // removing a node
+    void removeNode(int i) {
+        Node* temp = head;
+        int index = 0;
+        while (temp->next != nullptr) {
+            // find the node by id
+            if (temp->id == i) {
+                Node* temp2 = temp->next;
+                temp = head;
+                for (int i = 0; i < index; i++) {
+                    temp = temp->next;
+                }
+                temp->next = temp2;
+            }
+            index += 1;
+            temp = temp->next;
+        }
+    }
 };
 
 class State {
