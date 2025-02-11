@@ -125,6 +125,8 @@ class Character {
 
 class State {
     int screen_num;
+    Character* protagonist;
+    LinkedList linkedlist;
 
     public:
         State(std::istream &is) { is >> screen_num; }
@@ -134,6 +136,20 @@ class State {
         void write_to(std::ostream &os) const { os << screen_num << std::endl; }
 
         void update(const std::string &input);
+
+        void createProtagonist() {
+            std::string name;
+            int hp, str, itl, lck;
+            std::cout << "Enter name: ";
+            std::cin >> name;
+            std::cout << "Enter health: ";
+            std::cin >> hp;
+            std::cout << "Enter strength: ";
+            std::cin >> str;
+            std::cout << "Enter luck: ";
+            std::cin >> lck;
+            protagonist = new Character(name, hp, str, itl, lck);
+        }
 
 };
 
@@ -157,7 +173,7 @@ void display_text(const State &state, std::ostream &os) {
     if (n >= limit) exit(0);
 }
 
-// used to be called update_screen_num
+// update screen based on user input
 void State::update(const std::string &input) {
     if (0 == screen_num) { screen_num = 1; } 
     // screen 1
