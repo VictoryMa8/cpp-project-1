@@ -9,15 +9,18 @@ std::string text[limit];
 const int input_index = 2;
 const int prompt_index = 25;
 
+// node and linkedlist stuff
 struct Node {
     int id;
     std::string name;
     double value;
+    int quantity;
     Node* next;
 
     Node(int i, std::string n, double v) {
         id = i;
         name = n;
+        quantity = 1;
         value = v;
         next = nullptr;
     }
@@ -32,20 +35,28 @@ class LinkedList {
             head = nullptr;
         }
     // adding a new node
-    void addNode(int i, std::string n, double v) {
-        // create a new book with arguments
+    int addNode(int i, std::string n, int q, double v) {
+        // create a new node with arguments
         Node* node = new Node(i, n, v);
+        // set the quantity to q rather than 1
+        node->quantity = q;
         Node* temp = head;
         // if nothing in the linked list yet, set head to it
-        if (head == NULL) {
+        if (head == nullptr) {
             head = node;
+            return 0;
         }
         else {
             // if linked list not empty, new node is added to the end
             while (temp->next != nullptr) {
+                if (temp->name == n) {
+                    temp->quantity += q;
+                    return 0;
+                }
                 temp = temp->next;
             }
             temp->next = node;
+            return 0;
         }
     }
 
@@ -84,6 +95,32 @@ class LinkedList {
         std::cout << "Node not found" << std::endl;
         return false;
     }
+
+    // display nodes
+    void displayNodes() {
+        Node* temp = head;
+        while (temp != nullptr) {
+            std::cout << temp->name << "[" << temp->quantity << "]" << std::endl;
+            temp = temp->next;
+        }
+    }
+};
+
+class Character {
+    public:
+        std::string name;
+        int health;
+        int strength;
+        int intelligence;
+        int luck;
+
+        Character(std::string n, int hp, int str, int itl, int lck) {
+            name = n;
+            health = hp;
+            strength = str;
+            intelligence = itl;
+            luck = lck;
+        }
 };
 
 class State {
