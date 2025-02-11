@@ -59,20 +59,16 @@ class LinkedList {
             delete temp;
             return;
         }
-
         Node* temp = head;
         Node* prev = nullptr;
         while (temp != nullptr && temp->id != i) {
             prev = temp;
             temp = temp->next;
         }
-
         // if node not found
         if (temp == nullptr) return;
-
         prev->next = temp->next;
         delete temp;
-
     }
 
     // searching for a node by name
@@ -127,14 +123,21 @@ void display_text(const State &state, std::ostream &os) {
 // used to be called update_screen_num
 void State::update(const std::string &input) {
     if (0 == screen_num) { screen_num = 1; } 
+    // screen 1
     else if (screen_num == 1) { screen_num = 2; }
     else {
-      int input_num = stoi(input);
-      // screen 2
-      if (input_num == 1) {
-        screen_num = 3;
-      } else if (input_num == 2) { 
-        screen_num = 4; }
+
+        int input_num = stoi(input);
+        // screen 2
+        if (screen_num == 2) {
+            // user inputs 1
+            if (input_num == 1) {
+                screen_num = 3;
+            }
+            // user inputs 2
+            else if (input_num == 2) { 
+                screen_num = 4; }
+            }
     }
 }
 
