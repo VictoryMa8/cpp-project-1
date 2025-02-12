@@ -8,10 +8,13 @@ Choose an option.
 2) Option B.
 
 # screen 3
-Hello.
+1) Option C
+2) Option D
 
 # screen 4
 Greetings.
 
 # screen 5
-Hello.
+This is a test.
+
+# screen 6

@@ -149,6 +149,7 @@ class State {
             std::cout << "Enter luck: ";
             std::cin >> lck;
             protagonist = new Character(name, hp, str, itl, lck);
+            screen_num = 3;
         }
 
 };
@@ -179,18 +180,25 @@ void State::update(const std::string &input) {
     // screen 1
     else if (screen_num == 1) { screen_num = 2; }
     else {
-
         int input_num = stoi(input);
-        // screen 2
-        if (screen_num == 2) {
-            // user inputs 1
-            if (input_num == 1) {
-                screen_num = 3;
-            }
-            // user inputs 2
-            else if (input_num == 2) { 
-                screen_num = 4; }
-            }
+        switch (screen_num) {
+            // screen 2
+            case 2:
+                // user inputs 1
+                if (input_num == 1) {
+                    screen_num = 3;
+                }
+                // user inputs 2
+                else if (input_num == 2) { 
+                    screen_num = 4; 
+                }
+                break;
+            // screen 3
+            case 3:
+                if (input_num == 1) {
+                    screen_num = 5;
+                }
+        }
     }
 }
 
