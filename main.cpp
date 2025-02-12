@@ -146,10 +146,11 @@ class State {
             std::cin >> hp;
             std::cout << "Enter strength: ";
             std::cin >> str;
+            std::cout << "Enter intelligence: ";
+            std::cin >> itl;
             std::cout << "Enter luck: ";
             std::cin >> lck;
             protagonist = new Character(name, hp, str, itl, lck);
-            screen_num = 3;
         }
 
 };
@@ -198,6 +199,12 @@ void State::update(const std::string &input) {
                 if (input_num == 1) {
                     screen_num = 5;
                 }
+                if (input_num == 2) {
+                    screen_num = 6;
+                }
+            // screen 6
+            case 6:
+                createProtagonist();
         }
     }
 }

@@ -4,12 +4,12 @@ Welcome to the program. Press return to start.
 
 # screen 2
 Choose an option.
-1) Option A.
-2) Option B.
+1) Start New Game
+2) Load Previous Save
 
 # screen 3
-1) Option C
-2) Option D
+1) Quick Start
+2) Create New Character
 
 # screen 4
 Greetings.
@@ -18,3 +18,14 @@ Greetings.
 This is a test.
 
 # screen 6
+Character Creation Screen
+
+# screen 7
+Post char creation 1
+ 
+# screen 8
+Post char creation 2
+
+# screen 9 
+Post char creation 3
+
