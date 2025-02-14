@@ -21,11 +21,14 @@ This is a test.
 Character Creation Screen
 
 # screen 7
-Post char creation 1
- 
+1) Option A
+2) Option B
+
 # screen 8
 Post char creation 2
 
 # screen 9 
 Post char creation 3
 
+# screen 10
+Whats up

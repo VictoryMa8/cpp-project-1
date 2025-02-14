@@ -181,30 +181,48 @@ void State::update(const std::string &input) {
     // screen 1
     else if (screen_num == 1) { screen_num = 2; }
     else {
-        int input_num = stoi(input);
-        switch (screen_num) {
-            // screen 2
-            case 2:
-                // user inputs 1
-                if (input_num == 1) {
-                    screen_num = 3;
-                }
-                // user inputs 2
-                else if (input_num == 2) { 
-                    screen_num = 4; 
-                }
-                break;
-            // screen 3
-            case 3:
-                if (input_num == 1) {
-                    screen_num = 5;
-                }
-                if (input_num == 2) {
-                    screen_num = 6;
-                }
-            // screen 6
-            case 6:
-                createProtagonist();
+        try {
+            int input_num = stoi(input);
+            switch (screen_num) {
+                // screen 2
+                case 2:
+                    // user inputs 1
+                    if (input_num == 1) {
+                        screen_num = 3;
+                    }
+                    // user inputs 2
+                    else if (input_num == 2) { 
+                        screen_num = 4; 
+                    }
+                    break;
+                // screen 3
+                case 3:
+                    if (input_num == 1) {
+                        screen_num = 5;
+                    }
+                    if (input_num == 2) {
+                        screen_num = 6;
+                    }
+                // screen 5
+                case 5:
+                    if (input_num == 1) {
+                        screen_num = 7;
+                    }
+                case 6:
+                    createProtagonist();
+                    screen_num = 7;
+                case 7:
+                    if (input_num == 1) {
+                        screen_num = 8;
+                    }
+                    if (input_num == 2) {
+                        screen_num = 9;
+                    }
+                default:
+                    std::cout << "Invalid" << std::endl;
+            }
+        } catch (const std::invalid_argument& x) {
+            std::cout << "Invalid" << std::endl;
         }
     }
 }
